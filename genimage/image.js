@@ -9,11 +9,11 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 app.post('/', function(req, res) {
- x=req.body.myText;
+var x=req.body.myText;
 var textToImage = require('text-to-image');
 textToImage.generate(x).then(function (dataUri) {
   
-	let x = x.split(';base64,').pop();
+	let x = dataUri.split(';base64,').pop();
 	var fs = require('fs');
 	fs.writeFile('image.png', x, {encoding: 'base64'}, function(err) {
     	console.log('File created');
