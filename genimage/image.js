@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
  x=req.body.myText;
 var textToImage = require('text-to-image');
-textToImage.generate('Sample Text').then(function (dataUri) {
+textToImage.generate(x).then(function (dataUri) {
   
 	let base64Image = x.split(';base64,').pop();
 	var fs = require('fs');
