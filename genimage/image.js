@@ -13,10 +13,15 @@ app.post('/', function(req, res) {
 var textToImage = require('text-to-image');
 textToImage.generate(x).then(function (dataUri) {
   
-	let base64Image = x.split(';base64,').pop();
+	let x = x.split(';base64,').pop();
 	var fs = require('fs');
-	fs.writeFile('image.png', base64Image, {encoding: 'base64'}, function(err) {
+	fs.writeFile('image.png', x, {encoding: 'base64'}, function(err) {
     	console.log('File created');
+//		const pngToJpeg = require('png-to-jpeg');
+
+//let buffer = fs.readFileSync("./image.png");
+//pngToJpeg({quality: 90})(buffer)
+//.then(output => fs.writeFileSync("./image.jpeg", output));
 });
 });
 });
