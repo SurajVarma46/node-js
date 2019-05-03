@@ -16,7 +16,7 @@ textToImage.generate(x).then(function (dataUri) {
 	let x = dataUri.split(';base64,').pop();
 	var fs = require('fs');
 	fs.writeFile('image.png', x, {encoding: 'base64'}, function(err) {
-    	console.log('File created');
+	res.send("Image file created");
 //		const pngToJpeg = require('png-to-jpeg');
 
 //let buffer = fs.readFileSync("./image.png");
