@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var router = express.Router();
+var draw = require('../lib/draw_badge.js');
 var bodyparser = require('body-parser');
 const port = 80;
 app.use(bodyparser());
@@ -9,14 +11,15 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 	});
 
-app.post('/', function(req, res) {
-	var x=req.body.myText;
-	var fs = require('fs');
-var text2png = require('text2png');
-fs.writeFileSync('out.png', text2png(x, {textAlign:'center',color:'black',backgroundColor:'white',padding:10,lineSpacing:5}));
-res.sendFile(path.join(__dirname+'/out.png'));
+app.post('/', function (req, res, next) {
+	
+  res.setHeader('Content-Type', 'image/png');
+  draw().pngStream().pipe(res);
 });
-	/*
+
+module.exports = router;
+/*app.post('/', function(req, res) {
+	var x=req.body.myText;
 	var textToImage = require('text-to-image');
 	textToImage.generate(x,{
 			debug:true,

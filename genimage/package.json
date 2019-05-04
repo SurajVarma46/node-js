@@ -11,6 +11,7 @@
   "dependencies": {
     "nodemon": "^1.19.0",
     "openurl": "^1.1.1",
-    "pureimage": "^0.1.6"
+    "pureimage": "^0.1.6",
+    "resize-image": "^0.1.0"
   }
 }
