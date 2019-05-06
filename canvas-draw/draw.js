@@ -1,7 +1,8 @@
 var { createCanvas } = require("canvas");
 
 function draw(text) {
-  var canvas = createCanvas(1024, 768);
+var {createCanvas } = require('canvas');
+var canvas = createCanvas(1024, 768);
   var ctx = canvas.getContext("2d");
 
   ctx.fillStyle = "white";

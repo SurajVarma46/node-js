@@ -3,10 +3,11 @@ var app = express();
 var bodyparser = require("body-parser");
 var path = require("path");
 var draw = require("./draw.js");
+
 var port = 80;
 
 app.use(bodyparser());
-
+app.use(express.static(path.join(__dirname,'images')));
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
