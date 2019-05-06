@@ -12,10 +12,11 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-app.post("/download", function(req, res) {
+app.post("/download",async function(req, res) {
   res.setHeader("Content-Type", "image/jpeg");
-  draw(req.body.myText)
-    .pngStream()
+	const img = await draw(req.body.myText);
+	
+    img.pngStream()
     .pipe(res);
 });
 
