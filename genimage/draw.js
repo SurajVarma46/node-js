@@ -1,9 +1,10 @@
+
 var { createCanvas, loadImage } = require("canvas");
 const height = 768;
 const width = 1024;
 const linewidth = 800;
 const lineheight = 30;
-
+//import canvasToImage from 'canvas-to-image';
 async function draw(text) {
 	var {createCanvas, loadImage } = require('canvas');
 	var canvas = createCanvas(width, height);
@@ -18,7 +19,6 @@ async function draw(text) {
 	ctx.drawImage(image, 936, 0,64,64 );
 	return canvas;
 }
-
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
         var words = text.split(' ');
         var line = '';
