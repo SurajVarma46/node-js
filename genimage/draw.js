@@ -23,7 +23,7 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
         var words = text.split(' ');
         var line = '';
 	var author = '--- '+'Author';
-	var tags = 4;
+	var tags = 5;
         for(var n = 0; n < words.length; n++) {
         	var testLine = line + words[n] + ' ';
         	var metrics = context.measureText(testLine);
@@ -41,17 +41,17 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
 	context.font = "italic 18pt Arial";
 	context.fillStyle = "rgba(0,0,0,0.5)";
 	context.fillText(author,width/2,y+lineheight+10);
-	
+	const cornerRadius = 150;
 	context.font = "18pt Arial";
 	context.strokeStyle = "#000";
 	context.lineWidth = 0.1;
 	for (var i=0; i<tags; i++) {
    		context.beginPath();
-   		context.fillStyle = "#e0e0e0";
-   		context.rect(128 + (i * 100) + ((8-tags)*50) ,y + lineheight + 50 , 80, 30);
-   		context.fill();
-   		
-		context.stroke();
+		roundedRect(context,128+(i*100)+((8-tags)*50),y+lineheight+40,80,50);
+	//	context.rect(128 + (i * 100) + ((8-tags)*50) ,y + lineheight + 50 , 80, 30);
+   	//	context.fill();
+
+	//	context.stroke();
 	
    		context.fillStyle = "rgba(0,0,0,0.6)";
 		context.font = "italic 14pt Arial";
@@ -59,5 +59,16 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
 	}
 }
 
+function roundedRect(context,rectX,rectY,rectWidth,rectHeight){
+	var cornerRadius = 40;
+
+	context.lineJoin = "round";
+	context.strokeStyle="#e0e0e0";
+	context.lineWidth = 20;
+	context.fillStyle="#e0e0e0";
+	context.strokeRect(rectX+(cornerRadius/2), rectY+(cornerRadius/2), rectWidth-cornerRadius, rectHeight-cornerRadius);
+	context.fillRect(rectX+(cornerRadius/2), rectY+(cornerRadius/2), rectWidth-cornerRadius, rectHeight-cornerRadius);
+
+}
 
 module.exports = draw;
