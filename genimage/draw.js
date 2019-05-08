@@ -17,6 +17,7 @@ async function draw(text) {
 	wrapText(ctx, text, width/2, 280, linewidth, lineheight);
 	const image = await loadImage('images/logo.png');
 	ctx.drawImage(image, 936, 0,64,64 );
+	var imgData = canvas.toDataURL("image/jpeg").replace("image/jpeg","application/octet-stream");
 	return canvas;
 }
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
@@ -54,6 +55,7 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
 		context.font = "italic 10pt Arial";
    		context.fillText(tag[i], 168 + (i*100) + ((8-tags) * 50), y + lineheight + 70);
 	}
+
 }
 
 function roundedRect(context,rectX,rectY,rectWidth,rectHeight){
