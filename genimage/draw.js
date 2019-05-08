@@ -45,17 +45,14 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
 	context.font = "18pt Arial";
 	context.strokeStyle = "#000";
 	context.lineWidth = 0.1;
+	var tag = ["tag","tag","tag","tag","tag","tag","tag","tag"];
 	for (var i=0; i<tags; i++) {
    		context.beginPath();
 		roundedRect(context,128+(i*100)+((8-tags)*50),y+lineheight+40,80,50);
-	//	context.rect(128 + (i * 100) + ((8-tags)*50) ,y + lineheight + 50 , 80, 30);
-   	//	context.fill();
-
-	//	context.stroke();
 	
    		context.fillStyle = "rgba(0,0,0,0.6)";
-		context.font = "italic 14pt Arial";
-   		context.fillText("tag", 168 + (i*100) + ((8-tags) * 50), y + lineheight + 70);
+		context.font = "italic 10pt Arial";
+   		context.fillText(tag[i], 168 + (i*100) + ((8-tags) * 50), y + lineheight + 70);
 	}
 }
 
